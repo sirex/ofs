@@ -49,7 +49,7 @@ class ZOFS(OFSInterface):
         self.hashing_type = hashing_type
         self.quiet = quiet
         if mode == "r" and not is_zipfile(zipfile):
-            raise e
+            raise BadZipArchive(zipfile + ' is not a valid zipfile.')
         try:
             self.z = ZipFile(self.zipfile, self.mode, self.compression, self.allowZip64)
             #if mode != "r":
